@@ -24,7 +24,7 @@ WORKDIR /workdir
 
 COPY rembg /workdir/rembg/
 
-RUN cd /workdir/rembg && python3.9 -m pip install .[gpu]
+RUN cd /workdir/rembg && pip install .[gpu]
 
 RUN mkdir -p /root/.u2net
 # RUN wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx -O ~/.u2net/u2netp.onnx
@@ -36,7 +36,7 @@ RUN wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onn
 # ENTRYPOINT ["rembg"]
 # CMD ["--help"]
 
-
+COPY requirements.txt .
 # Install python packages
 RUN pip3 install --upgrade pip
 ADD requirements.txt requirements.txt
